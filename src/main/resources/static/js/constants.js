@@ -368,10 +368,10 @@ var DISPLAY_MAP_TITLE = {
 };
 
 var PERMISSION_ACTION = {
-    COMMIT: 'commit',
-    READ: 'read',
-    RELEASE: 'release',
-    UPDATE: 'update'
+    COMMIT: 'COMMIT',
+    READ: 'READ',
+    RELEASE: 'RELEASE',
+    UPDATE: 'UPDATE'
 };
 
 var NOTE_CLASS = {
