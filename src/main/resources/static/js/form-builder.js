@@ -603,8 +603,8 @@ var FormBuilder = (function ($) {
     function buildTable(data, tableOpts) {
         var columns, columnKeys, headingRow, c, cLen, column, header, key;
         var style = tableOpts.css || { margin: '0 auto' };
-        var headerTable = $('<table/>').css(style);
-        var dataTable= $('<table/>').css(style);
+        var headerTable = $('<table class="header-table"/>').css(style);
+        var dataTable= $('<table class="data-table"/>').css(style);
 
         columns = tableOpts.columns;
         columnKeys = Object.keys(columns);
@@ -675,7 +675,7 @@ var FormBuilder = (function ($) {
     }
 
     function addTableRowForTableTypeBuilder(dataRow) {
-        addTableRow(_modal.find('table'), dataRow, _options);
+        addTableRow(_modal.find('table.data-table'), dataRow, _options);
     }
 
     function addTableRow(table, dataRow, tableOpts) {
