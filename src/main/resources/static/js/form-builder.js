@@ -603,7 +603,7 @@ var FormBuilder = (function ($) {
     function buildTable(data, tableOpts) {
         var columns, columnKeys, headingRow, c, cLen, column, header, key;
         var style = tableOpts.css || { margin: '0 auto' };
-        var dataTable= $('<table class="data-table"/>').css(style);
+        var dataTable= $('<table class="form-builder-data-table"/>').css(style);
 
         columns = tableOpts.columns;
         columnKeys = Object.keys(columns);

@@ -12,7 +12,7 @@
     overflow-x: hidden;
 }
 
-.data-table th {
+.form-builder-data-table th {
     position: sticky;
     background: white;
     top: 0;
