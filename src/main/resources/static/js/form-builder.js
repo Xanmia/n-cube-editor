@@ -603,14 +603,12 @@ var FormBuilder = (function ($) {
     function buildTable(data, tableOpts) {
         var columns, columnKeys, headingRow, c, cLen, column, header, key;
         var style = tableOpts.css || { margin: '0 auto' };
-        var headerTable = $('<table class="header-table"/>').css(style);
         var dataTable= $('<table class="data-table"/>').css(style);
 
         columns = tableOpts.columns;
         columnKeys = Object.keys(columns);
         tableOpts.columnKeys = columnKeys;
         headingRow = $('<tr/>');
-        headerTable.append(headingRow);
         for (c = 0, cLen = columnKeys.length; c < cLen; c++) {
             key = columnKeys[c];
             column = columns[key];
@@ -623,8 +621,14 @@ var FormBuilder = (function ($) {
             }
             headingRow.append(header);
         }
+        dataTable.append(headingRow);
         createTableRows(dataTable, data, tableOpts);
-        return $('<div/>').append(headerTable).append($('<div style="max-height:300px; overflow-y:auto;"/>').append(dataTable));
+
+        if (tableOpts.canAddRemoveRows && !tableOpts.readonly) {
+            headingRow.append('<th/>');
+        }
+
+        return $('<div/>').append($('<div style="max-height:300px; overflow-y:auto;"/>').append(dataTable));
     }
 
     function sortTable(table, data, sortHeader, tableOpts) {

@@ -30,6 +30,7 @@ var NCEBuilderOptions = (function () {
             instructionsTitle: 'Instructions - Filter Data',
             instructionsText: 'Select filters to apply to cell data for ncube.',
             displayType: FormBuilder.DISPLAY_TYPE.TABLE,
+            size: FormBuilder.MODAL_SIZE.LARGE,
             canAddRemoveRows: true,
             readonly: opts.readonly,
             afterSave: opts.afterSave,

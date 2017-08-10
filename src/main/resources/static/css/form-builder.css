@@ -11,3 +11,9 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.data-table th {
+    position: sticky;
+    background: white;
+    top: 0;
+}
