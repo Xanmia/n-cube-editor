@@ -16,4 +16,5 @@
     position: sticky;
     background: white;
     top: 0;
+    z-index: 100;
 }
