@@ -2724,7 +2724,7 @@ var NCubeEditor2 = (function ($) {
             html += '><a href="#" class="anc-axis-transform">Go to Axis Transform</a></li>';
             html += '<li><a href="#" class="anc-break-reference">Break Reference</a></li>';
         } else {
-            html += '<li><a href="#" class="anc-create-reference">Add Axis Reference</a></li>';
+            html += '<li><a href="#" class="anc-create-reference">Convert to Reference Axis</a></li>';
         }
         html += '<li class="divider"/>';
 
