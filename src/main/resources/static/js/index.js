@@ -1410,7 +1410,7 @@ var NCE = (function ($) {
 
     function updateCubeLeftHandChangedStatus(cubeName, changeType) {
         _listOfCubes.find('li a')
-            .filter(function () { return this.innerHTML === cubeName; })
+            .filter(function () { return this.innerText === cubeName; })
             .removeClass('cube-added cube-modified')
             .addClass(changeType.CSS_CLASS);
         buildModifiedCubesList();
