@@ -290,7 +290,6 @@ var NCubeEditor2 = (function ($) {
     }
     
     function markCubeModified() {
-        nce.markCubeListChanged(cubeName);
         nce.updateCubeLeftHandChangedStatus(cubeName, CHANGETYPE.UPDATED);
     }
 
