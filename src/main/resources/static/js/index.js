@@ -1386,6 +1386,7 @@ var NCE = (function ($) {
             selectCubeByName: selectCubeByName,
             showNote: showNote,
             updateNote: updateNote,
+            markCubeListChanged: markCubeListChanged,
             loadNCubes: loadNCubes,
             loadNCubeListView: loadNCubeListView,
             getVersions: getVersions,
@@ -1415,7 +1416,12 @@ var NCE = (function ($) {
             .addClass(changeType.CSS_CLASS);
         buildModifiedCubesList();
     }
-    
+
+    function markCubeListChanged(cubeName) {
+        _cubeList[cubeName.toLowerCase()].changed = true
+    }
+
+
     function closeParentMenu() {
         $('.open').removeClass('open').tooltip('hide');
         $('div.dropdown-backdrop').hide();
