@@ -2015,6 +2015,7 @@ var NCE = (function ($) {
         } else {
             showNote('Unable to check permissions:<hr class="hr-small"/>' + result.data);
         }
+        return {};
     }
 
     function checkIsAppAdmin() {
