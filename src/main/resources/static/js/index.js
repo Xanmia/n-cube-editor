@@ -162,6 +162,8 @@ var NCE = (function ($) {
             startWorkers();
             loadAppListView();
             loadVersionListView();
+            buildBranchUpdateMenu();
+            buildBranchQuickSelectMenu();
             showActiveBranch();
             loadNCubes();
             buildMenu();
@@ -895,6 +897,8 @@ var NCE = (function ($) {
             saveSelectedStatus(cubeInfo[CUBE_INFO.STATUS]);
             saveSelectedVersion(cubeInfo[CUBE_INFO.VERSION]);
             loadVersionListView();
+            buildBranchUpdateMenu();
+            buildBranchQuickSelectMenu();
             saveSelectedBranch(cubeInfo[CUBE_INFO.BRANCH]);
             showActiveBranch();
             loadNCubes();
@@ -1030,7 +1034,7 @@ var NCE = (function ($) {
     function createBranchesUl(appId, func) {
         var html, bnIdx, bnLen, branchesUl, branchNames;
 
-        branchNames = getBranchNamesByAppId(appId);
+        branchNames = getBranchNames();//getBranchNamesByAppId(appId);
         html = '<ul class="dropdown-menu">';
         for (bnIdx = 0, bnLen = branchNames.length; bnIdx < bnLen; bnIdx++) {
             html += '<li><a href="#">';
@@ -1808,6 +1812,8 @@ var NCE = (function ($) {
                 _selectedCubeName = state.cube;
                 loadAppListView();
                 loadVersionListView();
+                buildBranchUpdateMenu();
+                buildBranchQuickSelectMenu();
                 showActiveBranch();
                 loadNCubes();
                 selectCubeByName(_selectedCubeName);
@@ -2074,8 +2080,6 @@ var NCE = (function ($) {
     function loadAppListView() {
         var ul, html, i, len, appNames;
         handleAppPermissions();
-        buildBranchUpdateMenu();
-        buildBranchQuickSelectMenu();
         html = '';
         appNames = loadAppNames();
 
@@ -2105,13 +2109,15 @@ var NCE = (function ($) {
         setTimeout(function() {   // Allow selection widget to update before loading content
             loadAppListView();
             loadVersionListView();
+            buildBranchUpdateMenu();
+            buildBranchQuickSelectMenu();
             showActiveBranch();
             loadNCubes();
             runSearch();
             buildMenu();
-            buildBranchUpdateMenu();
-            addToVisitedBranchesList(appIdFrom(_selectedApp, _selectedVersion, _selectedStatus, _selectedBranch));
-            buildBranchQuickSelectMenu();
+            //buildBranchUpdateMenu();  //loadAppListView() already calls this
+            addToVisitedBranchesList(appIdFrom(_selectedApp, _selectedVersion, _selectedStatus, _selectedBranch)); //showactivebranch already calls
+            //buildBranchQuickSelectMenu();
         }, PROGRESS_DELAY);
     }
     
@@ -2289,12 +2295,14 @@ var NCE = (function ($) {
 
         setTimeout(function() {
             // Allow bootstrap-selection widget to update before loading content
+            buildBranchUpdateMenu();
+            buildBranchQuickSelectMenu();
             showActiveBranch();
             loadNCubes();
             runSearch();
             buildMenu();
             addToVisitedBranchesList(appIdFrom(_selectedApp, _selectedVersion, _selectedStatus, _selectedBranch));
-            buildBranchQuickSelectMenu();
+           // buildBranchQuickSelectMenu();
         }, PROGRESS_DELAY);
     }
 
@@ -3002,6 +3010,8 @@ var NCE = (function ($) {
             saveSelectedStatus(STATUS.SNAPSHOT);
             saveSelectedVersion(newVersion);
             loadVersionListView();
+            buildBranchUpdateMenu();
+            buildBranchQuickSelectMenu();
             saveSelectedBranch(newBranch);
             showActiveBranch();
             loadNCubes();
@@ -3682,7 +3692,7 @@ var NCE = (function ($) {
     }
 
     function showActiveBranch() {
-        if (getBranchNames().indexOf(_selectedBranch) > -1) {
+        if (_branchNames.indexOf(_selectedBranch) > -1) {
             addToVisitedBranchesList(appIdFrom(_selectedApp, _selectedVersion, _selectedStatus, _selectedBranch));
         } else if (_selectedBranch === head) {
             showNote('Unable to get branch list.', 'Error');
@@ -3789,13 +3799,15 @@ var NCE = (function ($) {
         addToVisitedBranchesList(appIdFrom(_selectedApp, _selectedVersion, _selectedStatus, branchName));
 
         setTimeout(function() {
-            loadAppListView();
-            loadVersionListView();
+            //loadAppListView();  //this needed on changing a branch?
+            //loadVersionListView(); //needed?
+            buildBranchUpdateMenu();
+            buildBranchQuickSelectMenu();
             showActiveBranch();
             loadNCubes();
             runSearch();
             buildMenu();
-            buildBranchQuickSelectMenu();
+           // buildBranchQuickSelectMenu();
             southPanelResize();
         }, PROGRESS_DELAY);
         clearNotes(NOTE_CLASS.PROCESS_DURATION);
@@ -4365,6 +4377,8 @@ var NCE = (function ($) {
         addToVisitedBranchesList(copyAppId);
         loadAppListView();
         loadVersionListView();
+        buildBranchUpdateMenu();
+        buildBranchQuickSelectMenu();
         showActiveBranch();
         loadNCubes();
         runSearch();
